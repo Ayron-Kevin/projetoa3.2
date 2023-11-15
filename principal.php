@@ -1,6 +1,6 @@
 <?php
 
-
+include('validalogin.php');
 
 
 
@@ -18,11 +18,15 @@
 </head>
 <body>
     <center>
-        <h1> olá, Administrador
-
-        </h1>
+        <h1> olá, Administrador</h1>
+        <?php if($_SESSION['nivel'] < 3) { ?>
         <a href= "adicionar.php">
-            adicionar Usuário</a><br>
+        adicionar Usuário</a><br>
+       <?php} if($_SESSION['nivel'] == 1) {
+        >?>
+            <a href= "mudaracesso.php"> Mudar Tipo de Acesso</a><br>
+            <?php } ?>
+            <a href= "logout.php">Sair</a>
     </center>
 </body>
 </html>

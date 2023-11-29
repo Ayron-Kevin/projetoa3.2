@@ -47,14 +47,14 @@ if ($telefone <> NULL) {
 			</table>
 		</form>
 		<h3>Alterar Senha</h3>
-		<form id=" altera-senha" action= "alterarsenha.php" method= "POST">
-		Nova Senha:
-		<input type="password" name= "senha"><br>
-		Confirmar Senha :
-		<input type= "password" name = "confirmarsenha"><br><br>
-		<input type= "submit" name= "alterar" value= "Alterar">
-		<form>
-
+		<form id="alterar-senha" action="alterarsenha.php" method="POST">
+			Nova senha: 
+			<input type="password" name="senha" required><br>
+			Confirmar Senha: 
+			<input type="password" name="confirmasenha" required><br><br>
+			<input type="submit" name="alterar" value="Alterar Senha">
+		</form>
+		<a href="principal.php">Voltar</a>
 	</center>
 </body>
 </html>

@@ -2,23 +2,22 @@
 
 session_start();
 
-include('coenxao.php');
+include('conexao.php');
+include('funcoes.php');
 
-$senha = isset($_POST['senha']) ? $_POST ['senha'] : '';
-$confirmarsenha = isset($_POST['confirmarsenha'
-]) ? $_POST['confirmarsenha'] :'';
+$senha = isset($_POST['senha']) ? $_POST['senha'] : '';
+$confirmasenha = isset($_POST['confirmasenha']) ? $_POST['confirmasenha'] : '';
 
-$confirmarsenha = isset()
-
-if($senha <> $confirmarsenha) {
-    echo '<script>alert("Usuário ou senha incorretos");
-    window.location="index.php";
-    </script>';
+if($senha <> $confirmasenha) {
+	echo '<script>alert("Senha e confirmação são diferentes");
+		window.location="alterardados.php";</script>';
 } else {
-    $cpf = $SESSION['cpf'];
-    
+	$cpf = $_SESSION['cpf'];
+	$senhacriptografada = criptografar($senha);
+	$update = "UPDATE login SET senha = '$senhacriptografada' WHERE cpf = '$cpf'";
+	$query = mysqli_query($conexao, $update);
+	echo '<script>alert("Senha alterada com sucesso");
+		window.location="alterardados.php";</script>';
 }
-
-
 
 ?>

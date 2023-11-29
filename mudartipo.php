@@ -8,16 +8,18 @@ include('validaradmin.php');
 $cpf = isset($_POST['cpf']) ? $_POST['cpf'] : '';
 $nivel = isset($_POST['nivel']) ? $_POST['nivel'] : '';
 $telefone = isset($_POST['telefone']) ? $_POST['telefone'] : '';
+
 $admin = $_SESSION['cpf'];
 date_default_timezone_set('America/Sao_paulo');
-$data = date("Y-m-d H:i:s");
+$date = date("Y-m-d H:i:s");
 
 if($nivel <> 0) {
 	$updatelogin = "UPDATE login SET nivel = '$nivel' WHERE cpf = '$cpf'";
-	$querylogin = mysqli_query($conexao, $updatelogin); 
+	$querylogin = mysqli_query($conexao, $updatelogin);
 
-	$insert = "INSERT INTO log (cpf,cpf_alterado, data, nivel_novo)
-	VALUES ('$admin', '$cpf' , '$data' , '$nivel')";
+	$insert = "INSERT INTO log (cpf, cpf_alterado, data, novo_nivel)
+	VALUES
+	('$admin', '$cpf', '$date', '$nivel')";
 	$queryinsert = mysqli_query($conexao, $insert);
 }
 
